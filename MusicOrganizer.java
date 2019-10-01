@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * A class to hold details of audio tracks.
@@ -169,5 +170,14 @@ public class MusicOrganizer
         for(Track track : tempTracks) {
             addTrack(track);
         }
+    }
+    
+    /*
+     * Plays a random track from the ArrayList using the playTrack method
+     */
+    public void randomTrack() {
+        Random rantrack = new Random();
+        playTrack(rantrack.nextInt(tracks.size() - 1));
+        
     }
 }
