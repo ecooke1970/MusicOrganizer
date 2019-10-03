@@ -188,14 +188,21 @@ public class MusicOrganizer
         Random rantrack = new Random();
         ArrayList<Track> tempTracks = new ArrayList<Track>(tracks);
         int i = 0;
-        while(tempTracks.size() > 1) {
-            i = rantrack.nextInt(tempTracks.size() -1);
-            Track track = tempTracks.get(i);
-            player.startPlaying(track.getFilename());
-            System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
-            tempTracks.remove(i);
+        while(tempTracks.size() > 0) {
+            if(tempTracks.size() > 1) {
+                i = rantrack.nextInt(tempTracks.size() -1);
+                Track track = tempTracks.get(i);
+                player.startPlaying(track.getFilename());
+                System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
+                tempTracks.remove(i);
+            }
+            else {
+                Track track = tempTracks.get(0);
+                player.startPlaying(track.getFilename());
+                System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
+                tempTracks.remove(0);
+            }
         }
-        Track track = tempTracks.get(0);
-        player.startPlaying(track.getFilename());
+
     }
 }
